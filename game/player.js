@@ -2,7 +2,7 @@ var Player = function(name, color, position, direction) {
 
     this.name = name;
     this.position = position;
-    this.life = 3;
+    this.life = 1000;
     this.bullets = new Array();
     this.direction = direction;
     this.speed = 0;
@@ -21,7 +21,7 @@ var Player = function(name, color, position, direction) {
 };
 
 Player.prototype.dead = function () {
-    this.graphic.position.z = this.graphic.position.z-0.1;
+    this.graphic.position.z = this.graphic.position.z;
         //Nettoyage de la div container
         $("#container").html("");
         jQuery('#'+this.name+' >.life').text("Tu es mort !");
@@ -75,7 +75,7 @@ Player.prototype.move = function () {
     else if (this.speed < 0) {
         this.speed = this.speed + 0.04;
     }
-
+    
     this.graphic.position.x = this.position.x;
     this.graphic.position.y = this.position.y;
     
@@ -83,3 +83,6 @@ Player.prototype.move = function () {
     light1.position.y = this.position.y;
    //light1.position.z = this.graphic.position.z + 500;
 };
+Player.prototype.stop = function () {    
+    this.speed = 0
+;}
